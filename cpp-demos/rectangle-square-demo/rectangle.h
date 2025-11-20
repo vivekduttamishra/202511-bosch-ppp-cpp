@@ -1,15 +1,16 @@
 #pragma once
 #include <iostream>
 using namespace std;
+#include "shape.h"
 
 enum Orientation{ HORIZONTAL, VERTICAL };
 
-class Rectangle{
+class ProperRectangle :public Rectangle{
 private:
     double length;
     double width;
 public:
-    Rectangle(double l = 1.0, double w = 1.0) :length(l), width(w) {}
+    ProperRectangle(double l = 1.0, double w = 1.0) :length(l), width(w) {}
     double area() const {
         return length * width;
     }
@@ -18,7 +19,7 @@ public:
         return 2 * (length + width);
     }
 
-    Orientation getOrientation() const {
+    virtual Orientation getOrientation() const {
         return (length >= width) ? HORIZONTAL : VERTICAL;
     }
 
@@ -29,15 +30,15 @@ public:
     double getWidth() const {
         return width;
     }
-    void setLength(double l) {
+    void virtual setLength(double l) {
         length = l;
     }
-    void setWidth(double w) {
+    void virtual setWidth(double w) {
         width = w;
     }
 
     void draw() const {
-        cout<< (getOrientation()==HORIZONTAL ? "HORIZONTAL" : "VERTICAL") << " ";
+      //  cout<< (getOrientation()==HORIZONTAL ? "HORIZONTAL" : "VERTICAL") << " ";
         cout << "Rectangle[ " << length << ", " << width << "]"<< endl;
     }
 
