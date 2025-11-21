@@ -4,11 +4,11 @@
 using namespace std;
 
 
-template<typename T>
-vector<T> search(vector<T>&data, function<bool(T)> match){
+template<typename T, typename Matcher>
+vector<T> search(const vector<T>&data, Matcher match){
     vector<T> result;
     for(const auto& item: data){
-        if(match(data)){
+        if(match(item)){
             result.push_back(item);
         }
     }

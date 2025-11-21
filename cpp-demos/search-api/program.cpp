@@ -29,10 +29,11 @@ int main(){
     printVector("Original Data", data);
 
     
-    auto prime = search<int>(data, [](int number){
-        return isPrime(number);
-    });
+    auto prime = search(data, isPrime);
     printVector("Prime Numbers", prime);
+
+    auto even = search(data, [](int number){ return number % 2 == 0; });
+    printVector("Even Numbers", even);
 
     return 0;
 }
